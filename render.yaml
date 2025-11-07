@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: my-web-service  # Cambia este nombre por el nombre de tu servicio
+    env: python
+    plan: free  # Puedes elegir el plan que más te convenga
+    buildCommand: |
+      apt-get update && apt-get install -y gcc libatlas-base-dev  # Instalar gcc y otras dependencias necesarias
+      pip install -r requirements.txt  # Instalar las dependencias de Python
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0  # Ajusta el comando de inicio si es necesario
